@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BaseCell } from "./app/component/BaseCell";
+import { RouterList } from "./app/RouterList";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BaseCell />
+    <RouterList />
   </React.StrictMode>
 );
 
