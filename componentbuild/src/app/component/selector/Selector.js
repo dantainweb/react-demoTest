@@ -37,7 +37,7 @@ export function Selector(props) {
   });
 
   let element = (
-    <BaseCell selectTitle={title}>
+    <BaseCell Title={title}>
       <Select
         disabled={disable}
         error={errorFlag}
