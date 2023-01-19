@@ -1,24 +1,22 @@
 import { Grid } from "@mui/material";
-import { useState } from "react";
-import { Selector } from "./component/selector/Selector";
+import { Route, Routes } from "react-router-dom";
+import { CheckBox } from "./component/checkBox/CheckBox";
+import CheckBoxDemoComponent from "./demoComponent/CheckBoxDemoComponent";
+import SelectDemoComponent from "./demoComponent/SelectDemoComponent";
 
 export function RouterList(props) {
-  const [value, setValue] = useState("");
-  const changeValue = (value) => {
-    setValue(value);
-  };
-  let element = (
-    <Grid container>
-      <Grid item xs={2} marginLeft={10}>
-        <Selector
-          onChange={changeValue}
-          label="testSelect"
-          list={["one", "two", "three"]}
-          value={value}
-        />
-      </Grid>
-      <Grid item xs={2} marginLeft={-10}></Grid>
-    </Grid>
+  let SelectElement = (
+    <SelectDemoComponent />
   );
-  return element;
+
+  let checkBoxElement = (
+    <CheckBoxDemoComponent />
+  );
+
+  return (
+    <Routes>
+      <Route path="/testSelect" element={SelectElement} />
+      <Route path="/testCheckBox" element={checkBoxElement} />
+    </Routes>
+  );
 }

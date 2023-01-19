@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 
 export function BaseCell(props) {
   //Data======================================
-  let title = props.selectTitle;
+  let title = props.Title;
   let child = props.children;
 
   //======================================Data
