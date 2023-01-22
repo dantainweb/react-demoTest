@@ -1,8 +1,7 @@
-import { Grid } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
-import { CheckBox } from "./component/checkBox/CheckBox";
 import CheckBoxDemoComponent from "./demoComponent/CheckBoxDemoComponent";
 import SelectDemoComponent from "./demoComponent/SelectDemoComponent";
+import TableContainerDemoComponent from "./demoComponent/TableContainerDemoComponent";
 
 export function RouterList(props) {
   let SelectElement = (
@@ -13,10 +12,15 @@ export function RouterList(props) {
     <CheckBoxDemoComponent />
   );
 
+  let tableContainerDemoComponent = (
+    <TableContainerDemoComponent />
+  )
+
   return (
     <Routes>
       <Route path="/testSelect" element={SelectElement} />
       <Route path="/testCheckBox" element={checkBoxElement} />
+      <Route path="/testTable" element={tableContainerDemoComponent} />
     </Routes>
   );
 }
