@@ -1,5 +1,12 @@
 import { Table, TableContainer, Paper, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
 
+/**
+ * data: row data.  
+ * columns: data header.  
+ *   
+ * @param {Object} props 
+ * @returns 
+ */
 export default function TableContainers(props) {
     //Data---------------------------------------------------
     const data = props.data;
