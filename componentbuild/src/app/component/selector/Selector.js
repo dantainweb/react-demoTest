@@ -1,6 +1,17 @@
 import { MenuItem, Select } from "@mui/material";
 import { BaseCell } from "../BaseCell";
 
+/**
+ * list: option list.  
+ * value: 初始值.  
+ * title: selector's title.  
+ * disable: control disable this element.  
+ * errorFlag: control show the error on this element.  
+ * onChange: control onChange event.  
+ *   
+ * @param {Object} props 
+ * @returns 
+ */
 export function Selector(props) {
   //Data-----------------------------
   const list = props.list;
@@ -14,10 +25,6 @@ export function Selector(props) {
 
   //-----------------------------Process
   //Event-----------------------------
-  const chagneEvent = (e) => {
-    let value = e.target.value;
-    onChange(value);
-  };
   //-----------------------------Event
   //Render----------------------------
   /**
@@ -42,7 +49,7 @@ export function Selector(props) {
         disabled={disable}
         error={errorFlag}
         value={value}
-        onChange={chagneEvent}
+        onChange={onChange.bind(this)}
       >
         {ListElement}
       </Select>
