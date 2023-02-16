@@ -1,3 +1,4 @@
+import { red } from "@mui/material/colors";
 import { useState } from "react";
 import TableContainers from "../component/tableContainer/TableContainers";
 
@@ -28,16 +29,18 @@ export default function TableContainerDemoComponent() {
 
     let columns = [
         {
-            text: 'type',
-            value: 'type'
+            name: '#',
+            field: 'id'
         }, {
-            text: 'desc',
-            value: 'desc'
+            name: 'type',
+            field: 'type'
         }, {
-            text: '#',
-            value: 'id'
+            name: 'desc',
+            field: 'desc'
         }
     ];
+
+    const [selectedIndex, setSelectedIndex] = useState();
 
     let sx = {
         width: '30%'
@@ -46,15 +49,27 @@ export default function TableContainerDemoComponent() {
     //Process------------------------------------------------
     //------------------------------------------------Process
     //Event--------------------------------------------------
+    const clickEven = (row, rowIndex) => {
+        setSelectedIndex(rowIndex);
+
+    };
     //--------------------------------------------------Event
     //Render-------------------------------------------------
-    let element = (<>
+    let selectedSx = {
+        color: red[600]
+    }
+
+    let element = (
         <TableContainers
             data={data}
             columns={columns}
             sx={sx}
+            selected
+            onClick={clickEven}
+            selectedIndex={selectedIndex}
+            selectedSx={selectedSx}
         />
-    </>);
+    );
     return element;
     //-------------------------------------------------Render
 }

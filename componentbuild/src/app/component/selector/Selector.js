@@ -4,7 +4,7 @@ import { BaseCell } from "../BaseCell";
 /**
  * list: option list.  
  * value: 初始值.  
- * title: selector's title.  
+ * label: selector's title.  
  * disable: control disable this element.  
  * errorFlag: control show the error on this element.  
  * onChange: control onChange event.  

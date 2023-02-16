@@ -1,22 +1,23 @@
-import { Table, TableContainer, Paper, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
-import { grey } from "@mui/material/colors";
+import {
+    TableContainer,
+    Box,
+    Table,
+    TableHead,
+    TableBody,
+    TableRow,
+    TableCell
+} from "@mui/material";
+import { grey, red } from "@mui/material/colors";
 
-/**
- * data: row data.  
- * columns: data header.  
- *   
- * @param {Object} props 
- * @returns 
- */
-export default function TableContainers(props) {
+export default function DataTable(props) {
     //Data---------------------------------------------------
     const data = props.data;
     const columns = props.columns;
-    const sx = (props.sx !== undefined) ? props.sx : { width: '50%' };
+    const tableSx = props.tableSx;
+    const selectedSx = props.selectedSx;
     const onClick = props.onClick;
     const selected = props.selected;
-    const selectedIndex = props.selectedIndex;
-    const selectedSx = props.selectedSx;
+    const selectIndex = props.selectIndex;
     //---------------------------------------------------Data
     //Process------------------------------------------------
     //------------------------------------------------Process
@@ -28,24 +29,18 @@ export default function TableContainers(props) {
     };
     //--------------------------------------------------Event
     //Render-------------------------------------------------
-    /**
-     * 
-     * @param {object} row 
-     * @returns 
-     */
-    const buildCells = (row, rowIndex) => {
+    const buildRow = (row, rowIndex) => {
         let style = {};
         if (selected) {
-            if (selectedIndex === rowIndex) {
+            if (selectIndex === rowIndex) {
                 style = {
-                    backgroundColor: grey[400],
-                    color: grey['A100'],
+                    backgroundColor: grey[600],
+                    color: grey[200],
                     ...selectedSx
-                }
+                };
             }
         }
-        // 比對columns
-        let bodyRowElement = columns.map((cell, cellIndex) => {
+        return columns.map((cell, cellIndex) => {
             let key = `row-${rowIndex}-cell-${cellIndex}`;
             let value = row[cell.field];
             let element = (
@@ -55,29 +50,16 @@ export default function TableContainers(props) {
                 >
                     {value}
                 </TableCell>
-            );
+            )
             return element;
         });
-        return bodyRowElement;
-    }
-
-    const tableHeadCell = columns.map((column, index) => {
-        let key = `table-headcell-${index}`;
-        let element = (
-            <TableCell
-                key={key}
-            >
-                {column.name}
-            </TableCell>
-        );
-        return element;
-    });
+    };
 
     const buildRows = () => {
         let element = [];
         data.forEach((row, rowIndex) => {
+            let cells = buildRow(row, rowIndex);
             let key = `row-${rowIndex}`;
-            let cells = buildCells(row, rowIndex);
             let rowElement = (
                 <TableRow
                     key={key}
@@ -91,15 +73,27 @@ export default function TableContainers(props) {
         return element;
     };
 
-    let element = (<>
-        <TableContainer
-            component={Paper}
-            sx={sx}
-        >
-            <Table>
+    const buildColumns = () => {
+        return columns.map((column, index) => {
+            let key = `column-${index}`;
+            let value = column.name;
+            let element = (
+                <TableCell
+                    key={key}
+                >
+                    {value}
+                </TableCell>
+            );
+            return element;
+        });
+    };
+
+    let element = (
+        <TableContainer component={Box}>
+            <Table sx={tableSx}>
                 <TableHead>
                     <TableRow>
-                        {tableHeadCell}
+                        {buildColumns()}
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -107,7 +101,7 @@ export default function TableContainers(props) {
                 </TableBody>
             </Table>
         </TableContainer>
-    </>);
+    );
     return element;
     //-------------------------------------------------Render
 }
