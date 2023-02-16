@@ -33,21 +33,21 @@ export default function TableAndCheckboxDemoComponent() {
     }];
     let columns = [
         {
-            text: '#',
-            value: 'id'
+            name: '#',
+            field: 'id'
         }, {
-            text: 'type',
-            value: 'type'
+            name: 'type',
+            field: 'type'
         }, {
-            text: 'desc',
-            value: 'desc'
+            name: 'desc',
+            field: 'desc'
         }
     ];
     const label = 'checkAndTable';
     const checkboxList = ['A', 'B'];
     const [typeState, setTypeState] = useState([true, true]);
     const [data, setData] = useState(originData);
-    const [checkboxDisable, setCheckboxDisable] = useState([true, true]);
+    const [checkboxDisable, setCheckboxDisable] = useState([false, false]);
     //---------------------------------------------------Data
     //Process------------------------------------------------
     /**
