@@ -1,8 +1,9 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { red } from "@mui/material/colors";
 import { useState } from "react";
 import DataTable from "./DataTable";
 import EditDialog from "./EditDialog";
+import HiddenDialog from "./HiddenDialog";
 
 export default function Practice(props) {
     //Data---------------------------------------------------
@@ -28,7 +29,9 @@ export default function Practice(props) {
 
     const [selectIndex, setSelectIndex] = useState();
     const [open, setOpen] = useState(false);
+    const [oHidden, setOHidden] = useState(false);
     const [editData, setEditData] = useState({});
+    const [hidden, setHidden] = useState([false, false, false, false]);
     //---------------------------------------------------Data
     //Process------------------------------------------------
     const closeDialog = () => {
@@ -37,6 +40,12 @@ export default function Practice(props) {
     const openDialog = () => {
         setOpen(true);
     };
+    const openHiddenDialog = () => {
+        setOHidden(true);
+    };
+    const closeHiddenDialog = () => {
+        setOHidden(false);
+    }
     //------------------------------------------------Process
     //Event--------------------------------------------------
     const clickEven = (row, rowIndex) => {
@@ -58,10 +67,24 @@ export default function Practice(props) {
     const cancelEven = () => {
         closeDialog()
     }
+    const hiddenEven = () => {
+        openHiddenDialog();
+    };
+    const submitEven = () => {
+        closeHiddenDialog();
+    };
+    const checkEven = () => {
+        setHidden();
+    };
     //--------------------------------------------------Event
     //Render-------------------------------------------------
     let element = (
         <Box>
+            <Button
+                onClick={hiddenEven}
+            >
+                Hidden column
+            </Button>
             <DataTable
                 data={data}
                 columns={columns}
@@ -70,6 +93,7 @@ export default function Practice(props) {
                 selectIndex={selectIndex}
                 selectSx={selectSx}
                 onClick={clickEven}
+                hidden={hidden}
             />
             <EditDialog
                 open={open}
@@ -79,6 +103,14 @@ export default function Practice(props) {
                 onChange={changeEven}
                 onEdit={editEven}
                 onCancel={cancelEven}
+                hidden={hidden}
+            />
+            <HiddenDialog
+                open={oHidden}
+                columns={columns}
+                onSubmit={submitEven}
+                hidden={hidden}
+                onCheck={checkEven}
             />
         </Box>
     );
