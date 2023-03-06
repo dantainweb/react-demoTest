@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import CircleFork from "./circleFork/CircleFork";
 import TableDemo from "./component/tableDemo/TableDemo";
 import TableDemo2 from "./component/tableDemo2/TableDemo2";
 import CountPractice from "./count/CountPractice";
@@ -9,6 +10,7 @@ import SevenElevenSelectorComponent from "./demoComponent/SevenElevenSelectorCom
 import TableAndCheckboxDemoComponent from "./demoComponent/TableAndCheckboxDemoComponent";
 import TableAndSelectDemoComponent from "./demoComponent/TableAndSelectDemoComponent";
 import TableContainerDemoComponent from "./demoComponent/TableContainerDemoComponent";
+import PracticeNestList from "./nestList/PracticeNestList";
 
 export function RouterList() {
   let SelectElement = (
@@ -51,6 +53,14 @@ export function RouterList() {
     <CountPractice />
   );
 
+  let nestList = (
+    <PracticeNestList />
+  );
+
+  let circleFork = (
+    <CircleFork />
+  );
+
   return (
     <Routes>
       <Route path="/testSelect" element={SelectElement} />
@@ -63,6 +73,8 @@ export function RouterList() {
       <Route path="/tableDemo2" element={tableDemo2} />
       <Route path="/practice" element={practice} />
       <Route path="/countPractice" element={countPractice} />
+      <Route path="/nestList" element={nestList} />
+      <Route path="/circleFork" element={circleFork} />
     </Routes>
   );
 }

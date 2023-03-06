@@ -5,7 +5,7 @@ import DataTable from "./DataTable";
 import EditDialog from "./EditDialog";
 import HiddenDialog from "./HiddenDialog";
 
-export default function Practice(props) {
+export default function Practice() {
     //Data---------------------------------------------------
     const [data, setData] = useState([
         { id: 1, type: 'A', desc: 'abc' },
