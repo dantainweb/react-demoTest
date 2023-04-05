@@ -1,8 +1,10 @@
 import { Route, Routes } from "react-router-dom";
+import Calculator from "./calculator/Calculator";
 import CircleFork from "./circleFork/CircleFork";
 import TableDemo from "./component/tableDemo/TableDemo";
 import TableDemo2 from "./component/tableDemo2/TableDemo2";
 import CountPractice from "./count/CountPractice";
+import CountrySelect from "./countryBar/CountrySelect";
 import Practice from "./dataTablePractice/Practice";
 import CheckBoxDemoComponent from "./demoComponent/CheckBoxDemoComponent";
 import SelectDemoComponent from "./demoComponent/SelectDemoComponent";
@@ -10,6 +12,7 @@ import SevenElevenSelectorComponent from "./demoComponent/SevenElevenSelectorCom
 import TableAndCheckboxDemoComponent from "./demoComponent/TableAndCheckboxDemoComponent";
 import TableAndSelectDemoComponent from "./demoComponent/TableAndSelectDemoComponent";
 import TableContainerDemoComponent from "./demoComponent/TableContainerDemoComponent";
+import IMSystem from "./HuangIMS/IMSystem";
 import PracticeNestList from "./nestList/PracticeNestList";
 
 export function RouterList() {
@@ -61,6 +64,18 @@ export function RouterList() {
     <CircleFork />
   );
 
+  let calculator = (
+    <Calculator />
+  );
+
+  let countrySelect = (
+    <CountrySelect />
+  );
+
+  let IMSSelect = (
+    <IMSystem />
+  );
+
   return (
     <Routes>
       <Route path="/testSelect" element={SelectElement} />
@@ -75,6 +90,9 @@ export function RouterList() {
       <Route path="/countPractice" element={countPractice} />
       <Route path="/nestList" element={nestList} />
       <Route path="/circleFork" element={circleFork} />
+      <Route path="/calculator" element={calculator} />
+      <Route path="/selectCountry" element={countrySelect} />
+      <Route path="/IMSSelect" element={IMSSelect} />
     </Routes>
   );
 }
