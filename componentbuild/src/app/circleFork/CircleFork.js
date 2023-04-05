@@ -11,44 +11,35 @@ export default function CircleFork(props) {
     const [cursor, setCursor] = useState(0);
     //---------------------------------------------------Data
     //Process------------------------------------------------
-    const winnerPattern = (pattern, total) => {
-        if (pattern.includes(0) && pattern.includes(1) && pattern.includes(2)) {
-            return true;
-        }
-        if (pattern.includes(3) && pattern.includes(4) && pattern.includes(5)) {
-            return true;
-        }
-        if (pattern.includes(6) && pattern.includes(7) && pattern.includes(8)) {
-            return true;
-        }
-        if (pattern.includes(0) && pattern.includes(3) && pattern.includes(6)) {
-            return true;
-        }
-        if (pattern.includes(1) && pattern.includes(4) && pattern.includes(7)) {
-            return true;
-        }
-        if (pattern.includes(2) && pattern.includes(5) && pattern.includes(8)) {
-            return true;
-        }
-        if (pattern.includes(0) && pattern.includes(4) && pattern.includes(8)) {
-            return true;
-        }
-        if (pattern.includes(2) && pattern.includes(4) && pattern.includes(6)) {
-            return true;
+    const winnerPattern = (pattern) => {
+        let xSign = [];
+        let oSign = [];
+        for (let i = 0; i < pattern.length; i++) {
+            let val = pattern[i];
+            if (val == 'X') {
+                xSign.push(i);
+            }
+            if (val == 'O') {
+                oSign.push(i);
+            }
+            // 需要至少一方有三筆才需要比對
+            if (xSign.length < 3 && oSign.length < 3) {
+                continue;
+            }
+
+            if (xSign[0] === 0 || oSign[0] === 0) {
+
+            }
         }
         return false;
     };
 
-    const judgeWinner = (boardStatus, playerSign) => {
+    const judgeWinner = (boardStatus) => {
         let result = [];
-        let total = 0;
         boardStatus.forEach((item, index) => {
-            if (item === playerSign) {
-                result.push(index);
-                total = total + index
-            }
+            result.push(item);
         });
-        let isWinnerBorn = winnerPattern(result, total);
+        let isWinnerBorn = winnerPattern(result);
         if (isWinnerBorn) {
             return true;
         }
